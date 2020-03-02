@@ -39,4 +39,5 @@ npm-debug.log
 !.elasticbeanstalk/*.global.yml
 
 #vim tmp files
-*.swp
+.*.swp
+mix.lock
