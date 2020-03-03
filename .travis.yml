@@ -1,2 +1,26 @@
 language: elixir
-elixir: '1.10.1'
+elixir:
+  - 1.9
+
+services:
+  - postgresql
+
+stages:
+  - test
+  - deploy
+jobs:
+  include:
+    - name: "Test"
+      stage: test
+      env:
+        - MIX_ENV=test
+      script:
+        - mix deps.get
+        - mix ecto.create
+        - mix ecto.migrate
+        - mix test
+    - name: "Deploy"
+      if: (NOT type IN (pull_request)) AND (branch = master)
+      stage: deploy
+      script:
+        - eb deploy
