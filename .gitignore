@@ -41,3 +41,6 @@ npm-debug.log
 #vim tmp files
 .*.swp
 mix.lock
+terraform/.terraform
+.*.backup
+.*.tfstate
