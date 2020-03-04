@@ -20,7 +20,7 @@ jobs:
         - mix ecto.migrate
         - mix test
     - name: "Deploy"
-      if: (NOT type IN (pull_request)) AND (branch = master)
+      # if: (NOT type IN (pull_request)) AND (branch = master)
       stage: deploy
       deploy:
         provider: elasticbeanstalk
