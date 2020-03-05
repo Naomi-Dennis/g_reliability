@@ -1,20 +1,16 @@
 # MindTheGapp
 
-To start your Phoenix server:
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+## Testing 
+Testing framework is `ExUnit`. Use `mix test` to run tests. 
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## Start Local Server:
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+	- Build Docker image `docker build . --tag mind_the_gapp`
+	- Run Docker image `docker run -e GAPP_DB=$GAPP_DB,GAPP_PASS=$GAPP_PASS -p 4000:4000 mind_the_gapp`
+	- Go to `localhost:4000` in browser
 
-## Learn more
+## Deploy to Elastic Beanstalk
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+	- Run `eb deploy --envvars GAPP_DB=$GAPP_DB GAPP_PASS=$GAPP_PASS`
+

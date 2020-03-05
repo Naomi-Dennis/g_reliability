@@ -5,7 +5,7 @@ config :mind_the_gapp, MindTheGapp.Repo,
   username: "postgres",
   password: "postgres",
   database: "mind_the_gapp_dev",
-  hostname: "localhost",
+  hostname: System.get_env("my_server"),
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

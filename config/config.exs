@@ -5,7 +5,7 @@
 # is restricted to this project.
 
 # General application configuration
-use Mix.Config
+import Config
 
 config :mind_the_gapp,
   ecto_repos: [MindTheGapp.Repo]

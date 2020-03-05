@@ -1,0 +1,33 @@
+language: elixir
+elixir:
+  - 1.9
+
+services:
+  - postgresql
+
+stages:
+  - test
+  - deploy
+jobs:
+  include:
+    - name: "Test"
+      stage: test
+      env:
+        - MIX_ENV=test
+      script:
+        - mix deps.get
+        - mix ecto.create
+        - mix ecto.migrate
+        - mix test
+    - name: "Deploy"
+      stage: deploy
+      deploy:
+        provider: elasticbeanstalk
+        access_key_id:
+          secure: "Encrypted <access-key-id>=$AWS_SECRET_ID"
+        secret_access_key:
+          secure: "Encrypted <secret-access-key>=$AWS_SECRET_KEY"
+        region: "us-east-1"
+        app: "mind_the_gapp_prod"
+        env: "mind-the-gapp-prod"
+        bucket_name: "mind-the-gapp-backend-prod"
