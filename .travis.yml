@@ -12,15 +12,18 @@ jobs:
   include:
     - name: "Test"
       stage: test
+      script:
+        - mix deps.get
+        - mix test
+    - name: "Deploy"
+      if: (NOT type IN (pull_request)) AND (branch = master)
+      stage: deploy
       env:
-        - MIX_ENV=test
+        - MIX_ENV=prod
       script:
         - mix deps.get
         - mix ecto.create
         - mix ecto.migrate
-        - mix test
-    - name: "Deploy"
-      stage: deploy
       deploy:
         provider: elasticbeanstalk
         access_key_id:
