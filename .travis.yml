@@ -15,12 +15,15 @@ jobs:
       env:
         - MIX_ENV=test
       script:
-        - mix deps.get
-        - mix ecto.create
-        - mix ecto.migrate
         - mix test
     - name: "Deploy"
       stage: deploy
+      env:
+        - MIX_ENV=prod
+      script:
+        - mix deps.get
+        - mix ecto.create
+        - mix ecto.migrate
       deploy:
         provider: elasticbeanstalk
         access_key_id:

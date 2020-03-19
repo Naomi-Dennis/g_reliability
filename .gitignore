@@ -44,3 +44,4 @@ mix.lock
 terraform/.terraform
 .*.backup
 .*.tfstate
+.gitignore

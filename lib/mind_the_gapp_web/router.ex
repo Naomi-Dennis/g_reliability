@@ -11,12 +11,13 @@ defmodule MindTheGappWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug CORSPlug, origin: System.get_env("CORS_ALLOWED_ENDPOINT")
   end
 
   scope "/", MindTheGappWeb do
     pipe_through :api
 
-    get "/", PageController, :index
+    get "/", ArrivalTimeController, :index
   end
 
   # Other scopes may use custom stacks.
