@@ -12,11 +12,11 @@ jobs:
   include:
     - name: "Test"
       stage: test
-      env:
-        - MIX_ENV=test
       script:
+        - mix deps.get
         - mix test
     - name: "Deploy"
+      if: (NOT type IN (pull_request)) AND (branch = master)
       stage: deploy
       env:
         - MIX_ENV=prod
