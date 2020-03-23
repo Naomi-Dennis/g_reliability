@@ -12,6 +12,6 @@ RUN mix deps.get
 RUN mix compile
 RUN mix phx.digest
 RUN mix release --overwrite
-
+RUN _build/prod/rel/mind_the_gapp/bin/mind_the_gapp eval "MindTheGapp.Release.migrate"
 
 CMD _build/prod/rel/mind_the_gapp/bin/mind_the_gapp start
