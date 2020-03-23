@@ -17,16 +17,6 @@ resource "aws_elastic_beanstalk_configuration_template" "mind_the_gapp" {
   environment_id      = aws_elastic_beanstalk_environment.mind_the_gapp.id
 }
 
-resource "aws_s3_bucket" "mind_the_gapp" {
-  bucket = var.s3_bucket
-}
-
-resource "aws_s3_bucket_object" "project" {
-  bucket = aws_s3_bucket.mind_the_gapp.id
-  key    = "terraform.tfstate"
-  source = "./terraform.tfstate"
-}
-
 resource "aws_elastic_beanstalk_environment" "mind_the_gapp" {
   name                = var.ebs_env
   application         = aws_elastic_beanstalk_application.mind_the_gapp.name
@@ -78,4 +68,14 @@ resource "aws_db_instance" "db" {
   password             = aws_secretsmanager_secret_version.db_pass.secret_string
   parameter_group_name = "psql11"
   publicly_accessible  = "true"
+}
+
+resource "aws_s3_bucket" "mind_the_gapp" {
+  bucket = var.s3_bucket
+}
+
+resource "aws_s3_bucket_object" "project" {
+  bucket = aws_s3_bucket.mind_the_gapp.id
+  key    = "terraform.tfstate"
+  source = "./terraform.tfstate"
 }
