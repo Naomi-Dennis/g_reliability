@@ -20,6 +20,14 @@ jobs:
         - ./install_cli_tools.sh
         - ./aws_cmd/aws s3 cp $S3_TERRAFORM_STATES ./terraform.tfstate
         - cd terraform/
+        - export TF_VAR_secret_string=$SECRET_STRING
+        - export TF_VAR_secret_key_base=$SECRET_KEY_BASE
+        - export TF_VAR_cors_allowed_endpoint=$CORS_ALLOWED_ENDPOINT
+        - export TF_VAR_ebs_app=$EBS_APP
+        - export TF_VAR_ebs_env=$EBS_ENV
+        - export TF_VAR_s3_bucket=$S3_BUCKET
+        - export TF_VAR_secretsmanager=$SECRETSMANAGER
+        - export TF_VAR_db_name=$DB_NAME
         - ../terraform_cmd/terraform init
         - ../terraform_cmd/terraform apply -var-file="terraform.tfvars" -auto-approve
       deploy:
