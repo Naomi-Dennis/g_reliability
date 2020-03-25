@@ -19,7 +19,7 @@ jobs:
       script:
         - ./install_cli_tools.sh
         - cd terraform/
-        - ./aws_cmd/aws s3 cp $S3_TERRAFORM_STATES ./terraform.tfstate
+        - ../aws_cmd/aws s3 cp $S3_TERRAFORM_STATES ./terraform.tfstate
         - export TF_VAR_secret_string=$SECRET_STRING
         - export TF_VAR_secret_key_base=$SECRET_KEY_BASE
         - export TF_VAR_cors_allowed_endpoint=$CORS_ALLOWED_ENDPOINT
