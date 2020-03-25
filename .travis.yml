@@ -15,7 +15,7 @@ jobs:
         - mix test
     - name: "Deploy"
       stage: deploy
-      if: (NOT type IN (pull_request)) AND (branch = master)
+      # if: (NOT type IN (pull_request)) AND (branch = master)
       script:
         - ./install_cli_tools.sh
         - ./aws_cmd/aws s3 cp $S3_TERRAFORM_STATES ./terraform.tfstate
