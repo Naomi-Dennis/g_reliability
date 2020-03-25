@@ -1,10 +1,8 @@
-language: elixir
+anguage: elixir
 elixir:
   - 1.9
-
 services:
   - postgresql
-
 stages:
   - test
   - deploy
@@ -16,21 +14,21 @@ jobs:
         - mix deps.get
         - mix test
     - name: "Deploy"
-      if: (NOT type IN (pull_request)) AND (branch = master)
       stage: deploy
-      env:
-        - MIX_ENV=prod
+      if: (NOT type IN (pull_request)) AND (branch = master)
       script:
-        - mix deps.get
-        - mix ecto.create
-        - mix ecto.migrate
+        - ./install_cli_tools.sh
+        - ./aws_cmd/aws s3 cp $S3_TERRAFORM_STATES ./terraform.tfstate
+        - cd terraform/
+        - ../terraform_cmd/terraform init
+        - ../terraform_cmd/terraform apply -var-file="terraform.tfvars" -auto-approve
       deploy:
         provider: elasticbeanstalk
         access_key_id:
-          secure: "Encrypted <access-key-id>=$AWS_SECRET_ID"
+          secure: $AWS_ACCESS_KEY_ID
         secret_access_key:
-          secure: "Encrypted <secret-access-key>=$AWS_SECRET_KEY"
-        region: "us-east-1"
-        app: "mind_the_gapp_prod"
-        env: "mind-the-gapp-prod"
-        bucket_name: "mind-the-gapp-backend-prod"
+          secure: $AWS_SECRET_ACCESS_KEY
+        region: $AWS_DEFAULT_REGION
+        app: $EBS_APP
+        env: $EBS_ENV
+        bucket_name: $EBS_APP
