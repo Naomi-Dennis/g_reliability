@@ -29,7 +29,7 @@ jobs:
         - export TF_VAR_secretsmanager=$SECRETSMANAGER
         - export TF_VAR_db_name=$DB_NAME
         - ../terraform_cmd/terraform init
-        - ../terraform_cmd/terraform apply -var-file="terraform.tfvars" -auto-approve
+        - ../terraform_cmd/terraform apply -auto-approve
       deploy:
         provider: elasticbeanstalk
         access_key_id:
