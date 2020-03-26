@@ -36,7 +36,7 @@ jobs:
      provider: elasticbeanstalk
      access_key_id: $AWS_ACCESS_KEY_ID
      secret_access_key:
-     secure: BepX+8xjXlwc41BUWv8yf8mf4kUHyKqmu35UzyANyz/ZGpbt9hMNWiFt8+1uVjoHRApNPKiJMKsOj5oW6G76IOKNxlimHzwSOiCQivM0Uv8O7iIk4QPWjdzbnmy3jIkP5EvOLX629H3tBxv+qLlAT+c2aJducPzZIdsqj6axN64iDbLaiV5erxACox7Gjyp0Nj57OqFekr3lXnM+muwRpuaaHuWnHtaptoi4kp+NkBNe8KnCpmleje+5pN+Xcj+F2KW0daKE6ZucnM2u6dmGYZ+vvPu2ixC0gljPP95ghufo7bpA0NmqKd/0GMrqBPIjt1q/UW6gaVMaPJINAq9/eiXl8PinUPsAZ2G+Ok5lYdTUP+abIrD3jre3nNkLVztlFQTD8N8GPAZGXqoWnDeAKGRMMxROix2Qob/MdBNNGjv2AexJUfrHiLpFpeZZ2+nXLr81gRnx5knHmFYAfY8tJUFEX9aYjD7+f88Pomkhd/s0cYFIbSgIxN+OkTyGfyFb1U3MdMcEKKEm5du1Jpoc0tEajAerpXqN2QouCBdoNTIdwgdBPy29M+96Ewoz+n/Nycezxd+N+4Fx/gOsF71EeVlDo/qkRU/+7B9fGbuwM1NAFD5s2hlCm4y+G7L1GEIDC9FxBro9tjNbr7OHEZkLl/Wp3PBJI6KfPMKyntIERWo=
+        secure: BepX+8xjXlwc41BUWv8yf8mf4kUHyKqmu35UzyANyz/ZGpbt9hMNWiFt8+1uVjoHRApNPKiJMKsOj5oW6G76IOKNxlimHzwSOiCQivM0Uv8O7iIk4QPWjdzbnmy3jIkP5EvOLX629H3tBxv+qLlAT+c2aJducPzZIdsqj6axN64iDbLaiV5erxACox7Gjyp0Nj57OqFekr3lXnM+muwRpuaaHuWnHtaptoi4kp+NkBNe8KnCpmleje+5pN+Xcj+F2KW0daKE6ZucnM2u6dmGYZ+vvPu2ixC0gljPP95ghufo7bpA0NmqKd/0GMrqBPIjt1q/UW6gaVMaPJINAq9/eiXl8PinUPsAZ2G+Ok5lYdTUP+abIrD3jre3nNkLVztlFQTD8N8GPAZGXqoWnDeAKGRMMxROix2Qob/MdBNNGjv2AexJUfrHiLpFpeZZ2+nXLr81gRnx5knHmFYAfY8tJUFEX9aYjD7+f88Pomkhd/s0cYFIbSgIxN+OkTyGfyFb1U3MdMcEKKEm5du1Jpoc0tEajAerpXqN2QouCBdoNTIdwgdBPy29M+96Ewoz+n/Nycezxd+N+4Fx/gOsF71EeVlDo/qkRU/+7B9fGbuwM1NAFD5s2hlCm4y+G7L1GEIDC9FxBro9tjNbr7OHEZkLl/Wp3PBJI6KfPMKyntIERWo=
      region: us-east-1
      app: mind-the-gapp-production
      env: mind-the-gapp-production
