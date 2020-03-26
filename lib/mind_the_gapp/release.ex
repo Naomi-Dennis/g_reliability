@@ -6,8 +6,10 @@ defmodule MindTheGapp.Release do
     end
   end
 
-  def rollback(repo, version) do
-    {:ok, _, _} = Ecto.Migrator.with_repo(repo, &Ecto.Migrator.run(&1, :down, to: version))
+  def rollback(version) do
+    for repo <- repos() do
+      {:ok, _, _} = Ecto.Migrator.with_repo(repo, &Ecto.Migrator.run(&1, :down, to: version))
+    end
   end
 
   defp repos do

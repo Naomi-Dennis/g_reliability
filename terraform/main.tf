@@ -22,15 +22,9 @@ resource "aws_elastic_beanstalk_environment" "mind_the_gapp" {
   application         = aws_elastic_beanstalk_application.mind_the_gapp.name
   solution_stack_name = "64bit Amazon Linux 2018.03 v2.14.2 running Docker 18.09.9-ce"
 
-  setting {
+ setting {
     namespace = "aws:elasticbeanstalk:application:environment"
-    name      = "DB_NAME"
-    value     = var.db_name
-  }
-
-  setting {
-    namespace = "aws:elasticbeanstalk:application:environment"
-    name      = "GAPP_DB"
+    name      = "GAPP_DB_HOST"
     value     = aws_db_instance.db.address
   }
 
@@ -51,7 +45,6 @@ resource "aws_elastic_beanstalk_environment" "mind_the_gapp" {
     name      = "CORS_ALLOWED_ENDPOINT"
     value     = var.cors_allowed_endpoint
   }
-
 }
 
 resource "aws_secretsmanager_secret" "db_pass" {

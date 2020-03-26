@@ -5,11 +5,11 @@
 import Config
 
 database_url =
-  System.fetch_env("DATABASE_URL")
+  System.fetch_env("DATABASE_URL") |> elem(1)
 
 config :mind_the_gapp, MindTheGapp.Repo,
   # ssl: true,
-  url: URI.encode(elem(database_url, 1)),
+  url: database_url,
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
 
 secret_key_base =
