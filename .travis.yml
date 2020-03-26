@@ -40,5 +40,6 @@ deploy:
  region: us-east-1
  app: mind-the-gapp-production
  env: mind-the-gapp-production
+ bucket: mind-the-gapp-production
  on:
   branch: throawaybranch
