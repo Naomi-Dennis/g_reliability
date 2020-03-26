@@ -24,6 +24,12 @@ resource "aws_elastic_beanstalk_environment" "mind_the_gapp" {
 
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
+    name      = "DB_NAME"
+    value     = var.db_name
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
     name      = "GAPP_DB"
     value     = aws_db_instance.db.address
   }
@@ -76,6 +82,16 @@ resource "aws_s3_bucket" "mind_the_gapp" {
 
 resource "aws_s3_bucket_object" "project" {
   bucket = aws_s3_bucket.mind_the_gapp.id
+  key    = "mind-the-gapp-back.zip"
+  source = "../mind_the_gapp_back.zip"
+}
+
+resource "aws_s3_bucket" "mind_the_gapp_states" {
+  bucket = "mind-the-gapp-production-states"
+}
+
+resource "aws_s3_bucket_object" "project_states" {
+  bucket = aws_s3_bucket.mind_the_gapp_states.id
   key    = "terraform.tfstate"
   source = "./terraform.tfstate"
 }
