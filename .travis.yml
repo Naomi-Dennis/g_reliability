@@ -18,6 +18,7 @@ jobs:
     stage: deploy
     script:
      - "./install_cli_tools.sh"
+     - git archive -o mind_the_gapp_back.zip HEAD
      - cd terraform/
      - "../aws_cmd/aws s3 cp $S3_TERRAFORM_STATES ./terraform.tfstate"
      - ls -a
