@@ -1,43 +1,44 @@
-anguage: elixir
+---
+language: elixir
 elixir:
-  - 1.9
+ - 1.9
 services:
-  - postgresql
+ - postgresql
 stages:
-  - test
-  - deploy
+ - test
+ - deploy
 jobs:
-  include:
-    - name: "Test"
-      stage: test
-      script:
-        - mix deps.get
-        - mix test
-    - name: "Deploy"
-      stage: deploy
-      # if: (NOT type IN (pull_request)) AND (branch = master)
-      script:
-        - ./install_cli_tools.sh
-        - cd terraform/
-        - ../aws_cmd/aws s3 cp $S3_TERRAFORM_STATES ./terraform.tfstate
-        - ls -a
-        - export TF_VAR_secret_string=$SECRET_STRING
-        - export TF_VAR_secret_key_base=$SECRET_KEY_BASE
-        - export TF_VAR_cors_allowed_endpoint=$CORS_ALLOWED_ENDPOINT
-        - export TF_VAR_ebs_app=$EBS_APP
-        - export TF_VAR_ebs_env=$EBS_ENV
-        - export TF_VAR_s3_bucket=$S3_BUCKET
-        - export TF_VAR_secretsmanager=$SECRETSMANAGER
-        - export TF_VAR_db_name=$DB_NAME
-        - ../terraform_cmd/terraform init
-        - ../terraform_cmd/terraform apply -auto-approve
-      deploy:
-        provider: elasticbeanstalk
-        access_key_id:
-          secure: $AWS_ACCESS_KEY_ID
-        secret_access_key:
-          secure: $AWS_SECRET_ACCESS_KEY
-        region: $AWS_DEFAULT_REGION
-        app: $EBS_APP
-        env: $EBS_ENV
-        bucket_name: $EBS_APP
+ include:
+  - name: Test
+    stage: test
+    script:
+     - mix deps.get
+      - mix test
+  - name: Deploy
+    stage: deploy
+    script:
+     - "./install_cli_tools.sh"
+     - cd terraform/
+     - "../aws_cmd/aws s3 cp $S3_TERRAFORM_STATES ./terraform.tfstate"
+     - ls -a
+     - export TF_VAR_secret_string=$SECRET_STRING
+     - export TF_VAR_secret_key_base=$SECRET_KEY_BASE
+     - export TF_VAR_cors_allowed_endpoint=$CORS_ALLOWED_ENDPOINT
+     - export TF_VAR_ebs_app=$EBS_APP
+     - export TF_VAR_ebs_env=$EBS_ENV
+     - export TF_VAR_s3_bucket=$S3_BUCKET
+     - export TF_VAR_secretsmanager=$SECRETSMANAGER
+     - export TF_VAR_db_name=$DB_NAME
+     - "../terraform_cmd/terraform init"
+     - "../terraform_cmd/terraform apply -auto-approve"
+
+deploy:
+ provider: elasticbeanstalk
+ access_key_id: $AWS_ACCESS_KEY_ID
+ secret_access_key:
+  secure: BepX+8xjXlwc41BUWv8yf8mf4kUHyKqmu35UzyANyz/ZGpbt9hMNWiFt8+1uVjoHRApNPKiJMKsOj5oW6G76IOKNxlimHzwSOiCQivM0Uv8O7iIk4QPWjdzbnmy3jIkP5EvOLX629H3tBxv+qLlAT+c2aJducPzZIdsqj6axN64iDbLaiV5erxACox7Gjyp0Nj57OqFekr3lXnM+muwRpuaaHuWnHtaptoi4kp+NkBNe8KnCpmleje+5pN+Xcj+F2KW0daKE6ZucnM2u6dmGYZ+vvPu2ixC0gljPP95ghufo7bpA0NmqKd/0GMrqBPIjt1q/UW6gaVMaPJINAq9/eiXl8PinUPsAZ2G+Ok5lYdTUP+abIrD3jre3nNkLVztlFQTD8N8GPAZGXqoWnDeAKGRMMxROix2Qob/MdBNNGjv2AexJUfrHiLpFpeZZ2+nXLr81gRnx5knHmFYAfY8tJUFEX9aYjD7+f88Pomkhd/s0cYFIbSgIxN+OkTyGfyFb1U3MdMcEKKEm5du1Jpoc0tEajAerpXqN2QouCBdoNTIdwgdBPy29M+96Ewoz+n/Nycezxd+N+4Fx/gOsF71EeVlDo/qkRU/+7B9fGbuwM1NAFD5s2hlCm4y+G7L1GEIDC9FxBro9tjNbr7OHEZkLl/Wp3PBJI6KfPMKyntIERWo=
+ region: us-east-1
+ app: mind-the-gapp-production
+ env: mind-the-gapp-production
+ on:
+  branch: throawaybranch
