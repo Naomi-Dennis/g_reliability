@@ -31,7 +31,6 @@ jobs:
      - export TF_VAR_db_name=$DB_NAME
      - "../terraform_cmd/terraform init"
      - "../terraform_cmd/terraform apply -auto-approve"
-     - "cd ../"
     deploy:
      provider: elasticbeanstalk
      access_key_id: $AWS_ACCESS_KEY_ID
