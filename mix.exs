@@ -46,7 +46,9 @@ defmodule MindTheGapp.MixProject do
       {:poison, "~> 3.1"},
       {:cors_plug, "~> 1.5"},
       {:tzdata, "~> 1.0.3"},
-      {:timex, "~> 3.5"}
+      {:timex, "~> 3.5"},
+      {:protobuf, "~> 0.7.1"},
+      {:google_protos, "~> 0.1"}
     ]
   end
 
