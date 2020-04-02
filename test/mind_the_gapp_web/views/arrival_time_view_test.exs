@@ -4,8 +4,12 @@ defmodule MindTheGappWeb.ArrivalTimeViewTest do
   alias MindTheGappWeb.ArrivalTimeView
 
   def generate_seed_date(days_from_today) do
-    Timex.now
-    |> Timex.add(%Timex.Duration{seconds: 3600 * 24 * -days_from_today, microseconds: 0, megaseconds: 0 })
+    Timex.now()
+    |> Timex.add(%Timex.Duration{
+      seconds: 3600 * 24 * -days_from_today,
+      microseconds: 0,
+      megaseconds: 0
+    })
   end
 
   describe "Arrival Time View" do
@@ -17,7 +21,7 @@ defmodule MindTheGappWeb.ArrivalTimeViewTest do
         [generate_seed_date(3), 1.0],
         [generate_seed_date(4), -1.0],
         [generate_seed_date(5), -0.4],
-        [generate_seed_date(6), 4],
+        [generate_seed_date(6), 4]
       ]
 
       expected_payload = [
@@ -27,10 +31,11 @@ defmodule MindTheGappWeb.ArrivalTimeViewTest do
         %{day: "3 Days Ago", meanArrivalDifferences: 1.0},
         %{day: "4 Days Ago", meanArrivalDifferences: -1.0},
         %{day: "5 Days Ago", meanArrivalDifferences: -0.4},
-        %{day: "6 Days Ago", meanArrivalDifferences: 4},
+        %{day: "6 Days Ago", meanArrivalDifferences: 4}
       ]
 
-      assert expected_payload == Phoenix.View.render(ArrivalTimeView, "index.json", data: arrival_averages)
+      assert expected_payload ==
+               Phoenix.View.render(ArrivalTimeView, "index.json", data: arrival_averages)
     end
   end
 end

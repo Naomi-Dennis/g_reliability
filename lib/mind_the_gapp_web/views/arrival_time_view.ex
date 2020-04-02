@@ -16,14 +16,16 @@ defmodule MindTheGappWeb.ArrivalTimeView do
     case days_ago do
       0 ->
         "Today"
+
       1 ->
         "Yesterday"
+
       _ ->
         "#{days_ago} Days Ago"
     end
   end
 
   defp determine_difference_in_date_from_today(day2) do
-    (DateTime.diff(Timex.now, day2) / (24 * 3600)) |> Kernel.trunc
+    (DateTime.diff(Timex.now(), day2) / (24 * 3600)) |> Kernel.trunc()
   end
 end
