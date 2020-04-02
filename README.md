@@ -1,5 +1,5 @@
 # Mind The G-app
-
+[![Build Status](https://travis-ci.com/Naomi-Dennis/mind_the_gapp_back.svg?branch=master)](https://travis-ci.com/Naomi-Dennis/mind_the_gapp_back)
 
 ## Testing
 Testing framework is `ExUnit`. Use `mix test` to run tests.
