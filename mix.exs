@@ -47,7 +47,9 @@ defmodule MindTheGapp.MixProject do
       {:cors_plug, "~> 1.5"},
       {:tzdata, "~> 1.0.3"},
       {:timex, "~> 3.5"},
-      {:quantum, "~> 3.0-rc"}
+      {:quantum, "~> 3.0-rc"},
+      {:httpoison, "~> 1.6"},
+      {:protobuf, "~> 0.7.1"}
     ]
   end
 
