@@ -11,7 +11,8 @@ defmodule MindTheGapp.Application do
       # Start the Ecto repository
       MindTheGapp.Repo,
       # Start the endpoint when the application starts
-      MindTheGappWeb.Endpoint
+      MindTheGappWeb.Endpoint,
+      MindTheGapp.Mta.Scheduler
       # Starts a worker by calling: MindTheGapp.Worker.start_link(arg)
       # {MindTheGapp.Worker, arg},
     ]
