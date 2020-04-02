@@ -7,6 +7,5 @@ defmodule MindTheGapp.Repo.Migrations.CreateScheduledArrivalTimes do
       add :arrival_time, :string
       add :stop_id, :string
     end
-
   end
 end
